@@ -1,0 +1,322 @@
+html {
+    box-sizing: border-box;
+    font-size: 10px;
+    font-family: 'Cabin Sketch', cursive;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Amatic SC', cursive;
+    color: rgb(255, 160, 17);
+  }
+  
+  .no-loaded {
+      display: none;
+  }
+
+  .container {
+    margin: 0 auto;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+:focus {
+    outline-style: none;
+    outline-width: 0px !important;
+    outline-color: none !important;
+} /* Убрать обводку у кнопок после нажатия */
+
+
+
+.bgvideo{
+  opacity: 0.3;
+  bottom: -60%;
+  width: auto;
+  z-index: -100;
+}
+
+.game {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(270deg, rgb(165, 188, 203), rgb(248, 250, 252), rgb(159, 184, 199));
+}
+
+.login {
+  width: 100%;
+  height: 100vh;
+  background-image: url(./Sky.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clouds {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex: 0.85;
+}
+
+.displays {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 0.15;
+  height: 100vh;
+  background-color: rgb(147, 243, 243);
+  z-index: 9999;
+}
+
+.footer {
+  border-top: rgb(239, 241, 110) solid 2px;
+  bottom: 0;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 200px;
+}
+
+img {
+  width: 100%;
+}
+
+.one img {
+  width: 200px;
+  animation: move 10s linear 0s infinite;
+}
+.two img {
+  width: 300px;
+  animation: forwards 5s linear 0s infinite;
+}
+.three img {
+  width: 170px;
+  animation: backwards 5s linear 0s infinite;
+}
+.four img {
+  width: 220px;
+  animation: lets 30s linear 0s infinite;
+}
+.sun img {
+  width: 250px;
+  margin: -50px -150px -100px -100px;
+  z-index: -1;
+}
+
+.rows {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+  background-image: url(./sun.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  top: -10%;
+  height: 200px;
+}
+
+.display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top:  rgb(230, 240, 240) solid 5px;
+  border-left:  rgb(230, 240, 240) solid 5px;
+  border-bottom:  rgb(170, 245, 245) solid 5px;
+  border-right:  rgb(170, 245, 245) solid 5px;
+  border-radius: 10px;
+  background-color: rgb(200, 245, 245);
+  min-width: 162px;
+  height: 50px;
+  margin-bottom: 50px;
+}
+
+.play-button,
+.how-play-button {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-log {
+  padding: 5px 20px 5px 20px !important;
+  border-top:  rgb(255, 160, 17) solid 5px !important;
+  border-left:  rgb(255, 160, 17) solid 5px !important;
+  border-bottom:  rgba(255, 160, 17, 0.6) solid 5px !important;
+  border-right:  rgba(255, 160, 17, 0.6) solid 5px !important;
+  background-color: rgb(243, 179, 84) !important;
+}
+
+.button-top,
+.button-center,
+.button-down,
+.button-organ {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.btn {
+  padding: 0;
+  min-width: 50px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top:  rgb(230, 240, 240) solid 5px;
+  border-left:  rgb(230, 240, 240) solid 5px;
+  border-bottom:  rgb(170, 245, 245) solid 5px;
+  border-right:  rgb(170, 245, 245) solid 5px;
+  border-radius: 10px;
+  background-color: rgb(200, 245, 245);
+  margin: 3px;
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: rgba(239, 241, 110, 0.5);
+}
+.btn:active {
+  border-color: rgba(239, 241, 110, 0.5);
+}
+
+.login-title,
+.login-text {
+  margin-top: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 650px;
+}
+
+p {
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 24px;
+  font-weight: 600;
+  color: rgb(255, 160, 17);
+  position: relative;
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 64px;
+  font-weight: 800;
+  color: rgb(255, 160, 17);
+  position: relative;
+}
+
+h2 {
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 28px;
+  font-weight: 600;
+  color: azure;
+  position: relative;
+  top: 40%;
+}
+h3 {
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 28px;
+  font-weight: 600;
+  color: azure;
+  position: relative;
+  top: -10%;
+}
+
+.drop {
+  position: fixed;
+  background-image: url(./drop.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100px;
+  height: 100px;
+  z-index: 999999;
+}
+
+
+@keyframes move { 
+  0% { 
+    margin: 0px 0px 0px 0px;
+  }
+  25% { 
+    margin: 30px 30px 0px 0px;
+  }  
+  50% { 
+    margin: 20px 50px 0px 0px;
+  } 
+  75% { 
+    margin: 25px 20px 0px 0px;
+  } 
+  100% {
+    margin: 0px 0px 0px 0px;
+ }
+}
+@keyframes forwards { 
+  0% { 
+    margin: 0px 0px 0px 0px;
+  }
+  25% { 
+    margin: 60px -30px 0px 0px;
+  }  
+  50% { 
+    margin: -30px 30px 0px 0px;
+  } 
+  75% { 
+    margin: 5px 40px 0px 0px;
+  } 
+  100% {
+    margin: 0px 0px 0px 0px;
+ }
+}
+@keyframes backwards { 
+  0% { 
+    margin: 0px 0px 0px 0px;
+  }
+  25% { 
+    margin: 10px -10px 0px 0px;
+  }  
+  50% { 
+    margin: -20px 20px 0px 0px;
+  } 
+  75% { 
+    margin: 30px -30px 0px 0px;
+  } 
+  100% {
+    margin: 0px 0px 0px 0px;
+ }
+}
+@keyframes lets { 
+  0% { 
+    margin: 0px 0px 0px 0px;
+  }
+  25% { 
+    margin: 50px 10px 0px 0px;
+  }  
+  50% { 
+    margin: 10px 50px 0px 0px;
+  } 
+  75% { 
+    margin: 25px 25px 0px 0px;
+  } 
+  100% {
+    margin: 0px 0px 0px 0px;
+ }
+}

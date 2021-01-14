@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Raindrops</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="registretion no-loaded">
+        <div class="login">
+            <div class="login-title">
+                <h1>RAINDROPS</h1>
+            </div>
+            <div class="login-text">
+                <p>This game is designed to develop mental thinking, raise the level of arithmetic, concentration and attention. During the game, raindrops appear with an example. You need to give the correct answer until the drop falls into the sea. The faster you answer, the more points you get.</p>
+            </div>
+            <div class="login-buttons">
+                <div class="play-button">
+                    <button type="button" data-number class="btn-log btn">Play</button>
+                </div>
+                <div class="how-play-button">
+                    <button type="button" data-number class="btn-log btn">How To Play</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="playing">
+        <div class="game">
+            <div class="rows">
+                <div class="clouds">
+                    <div class="cloud one">
+                        <img src="./clouds.svg" alt="clouds">
+                    </div>
+                    <div class="cloud two">
+                        <img src="./clouds.svg" alt="clouds">
+                    </div>
+                    <div class="cloud three">
+                        <img src="./clouds.svg" alt="clouds">
+                    </div>
+                    <div class="sun">
+                        <img src="./sun.svg" alt="sun">
+                    </div>
+                    <div class="cloud four">
+                        <img src="./clouds.svg" alt="clouds">
+                    </div>
+                </div>
+                <div class="displays" id="displays">
+                    <div class="score">
+                        <h2>Score:</h2>
+                    </div>
+                    <h3>00</h3>
+                    <h3>Your Answer</h3>
+                    <div class="display">
+
+                    </div>
+                    <div class="bottoms">
+                        <div class="button-top">
+                            <button type="button" data-number class="btn">7</button>
+                            <button type="button" data-number class="btn">8</button>
+                            <button type="button" data-number class="btn">9</button>
+                        </div>
+                        <div class="button-center">
+                            <button type="button" data-number class="btn">4</button>
+                            <button type="button" data-number class="btn">5</button>
+                            <button type="button" data-number class="btn">6</button>
+                        </div>
+                        <div class="button-down">
+                            <button type="button" data-number class="btn">1</button>
+                            <button type="button" data-number class="btn">2</button>
+                            <button type="button" data-number class="btn">3</button>
+                        </div>
+                        <div class="button-organ">
+                            <button type="button" data-number class="btn">Del</button>
+                            <button type="button" data-number class="btn">0</button>
+                            <button type="button" data-number class="btn">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <video autoplay loop muted class="bgvideo" id="video" src="./video/water.mp4"></video>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./main.js"></script>
+</body>
+</html>
