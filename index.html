@@ -8,7 +8,10 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="registretion no-loaded">
+    <audio id="sound-down" src="./drop-sound.mp3"></audio>
+    <audio id="sound-allow" src="./sound-allow.mp3"></audio>
+    <audio id="sound-fon" loop src="./sound-fon.mp3"></audio>
+    <div class="load-game1">
         <div class="login">
             <div class="login-title">
                 <h1>RAINDROPS</h1>
@@ -18,15 +21,15 @@
             </div>
             <div class="login-buttons">
                 <div class="play-button">
-                    <button type="button" data-number class="btn-log btn">Play</button>
+                    <button type="button" onClick="clickPlay()" data-number class="btn-log btn">Play</button>
                 </div>
                 <div class="how-play-button">
-                    <button type="button" data-number class="btn-log btn">How To Play</button>
+                    <button type="button" onClick="clickAutoplay()" data-number class="btn-log btn">How To Play</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="playing">
+    <div class="load-game2 no-loaded">
         <div class="game">
             <div class="rows">
                 <div class="clouds">
@@ -50,10 +53,10 @@
                     <div class="score">
                         <h2>Score:</h2>
                     </div>
-                    <h3>00</h3>
+                    <h3 id="score"></h3>
                     <h3>Your Answer</h3>
                     <div class="display">
-
+                        <h3 id="solution"></h3>
                     </div>
                     <div class="bottoms">
                         <div class="button-top">
@@ -79,8 +82,46 @@
                     </div>
                 </div>
             </div>
-            <div class="footer">
+            <div class="footer" id="footer">
                 <video autoplay loop muted class="bgvideo" id="video" src="./video/water.mp4"></video>
+            </div>
+        </div>
+    </div>
+    <div class="load-game3 no-loaded">
+        <div class="statistics">
+            <div class="statistics-title">
+                <h1>Statistics:</h1>
+            </div>
+            <div class="statistics-table">
+                <div class="end-score">
+                    <h5>Score:</h5>
+                    <h5 id="score-game">0</h5>
+                </div>
+                <div class="time">
+                    <h5>Time Game:</h5>
+                    <h5 id="time-game">0</h5>
+                </div>
+                <div class="response">
+                    <h5>Average response time:</h5>
+                    <h5 id="response-game">0</h5>
+                </div>
+                <div class="allow">
+                    <h5>Right answers:</h5>
+                    <h5 id="right-game">0</h5>
+                </div>
+                <div class="deny">
+                    <h5>Wrong answers:</h5>
+                    <h5 id="wrong-game">0</h5>
+                </div>
+                <div class="missed">
+                    <h5>Missed answers:</h5>
+                    <h5 id="missed-game">0</h5>
+                </div>
+                <div class="login-buttons">
+                    <div class="play-button">
+                        <button type="button" onClick="clickRestart()" data-number class="btn-log btn">Restart</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
