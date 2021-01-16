@@ -4,7 +4,9 @@ const load3 = document.querySelector('.load-game3');
 const soundDown = document.getElementById('sound-down');
 const soundFon = document.getElementById('sound-fon');
 const soundAllow = document.getElementById('sound-allow');
-
+var numbers = document.querySelectorAll("[data-number]");
+let temporarily;
+    
 
 // Statistics
 
@@ -57,12 +59,12 @@ function startGame () {
             let formulaSumbol = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
             switch (formulaSumbol) {
                 case 1:
-                    formulaMin = -50;
-                    formulaMax = 50;
+                    formulaMin = 0;
+                    formulaMax = 100;
                     break;
                 case 2:
-                    formulaMin = -50;
-                    formulaMax = 50;
+                    formulaMin = 0;
+                    formulaMax = 100;
                     break;
             }
             let sumbolOne = Math.floor(Math.random() * (formulaMax - formulaMin + 1)) + formulaMin;
@@ -172,7 +174,7 @@ function startGame () {
 
 function compare () {
     for ( let i = 0; i < drops.length; i++) {
-        if ( drops[i].result === userResult ) {
+        if ( drops[i] != undefined && drops[i].result === userResult ) {
             drops[i].div.remove();
             soundAllow.play();
             score = (score + 100) - Math.ceil(drops[i].timeLive / 10);
@@ -180,7 +182,9 @@ function compare () {
             scoreTag.textContent = score;
             drops.splice(i, 1);
             allowAnswer++;
-        } else if ( drops[i].result != userResult ) {
+            solutionUserTag.textContent = "0";
+            userResult = 0;
+        } else if ( drops[i] != undefined && drops[i].result != userResult ) {
             score = (score - ( 20 + Math.ceil(drops[i].timeLive / 10)));
             scoreTag.textContent = score;
             denyAnswer++;
@@ -206,7 +210,7 @@ setInterval ( function() {
     if ( autoplay === true ) {
         let solution = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
 
-        if( typeof drops[solution].result === undefined ) {
+        if( drops[solution] === undefined ) {
             return false;
         } else {
             userResult = drops[solution].result;
@@ -216,7 +220,57 @@ setInterval ( function() {
     }
 }, 3000);
 
+for (var i = 0; i < numbers.length; i++) {
+    var number = numbers[i];
+    number.addEventListener('click', function (e) {
+      numberPress(e.target.textContent);
+    });
+};
 
+function numberPress(number) {
+    if (solutionUserTag.textContent === "Play" || solutionUserTag.textContent === "0" ) {
+        solutionUserTag.textContent = "";
+    }
+    if (solutionUserTag.textContent === "") {
+        solutionUserTag.textContent = number;
+        userResult = +number;
+    } else {
+        temporarily = solutionUserTag.textContent + number;
+        solutionUserTag.textContent = temporarily;
+        userResult = +temporarily;
+    }
+};
+
+function del () {
+    if (solutionUserTag.textContent === "Play") {
+        solutionUserTag.textContent = "0";
+    }
+    if (solutionUserTag.textContent === "") {
+        solutionUserTag.textContent = "0";
+        userResult = 0;
+    } else {
+        solutionUserTag.textContent = "0";
+        userResult = 0;
+    }
+};
+
+function submit () {
+    if (solutionUserTag.textContent === "Play" || solutionUserTag.textContent === "0" || solutionUserTag.textContent === "" ) {
+        return false;
+    } else {
+        compare ();
+    }
+};
+
+function negative () {
+    if (solutionUserTag.textContent === "Play" || solutionUserTag.textContent === "0" || solutionUserTag.textContent === "" ) {
+        solutionUserTag.textContent = "-";
+    } else {
+        temporarily = "-" + solutionUserTag.textContent;
+        solutionUserTag.textContent = +temporarily;
+        userResult = "-" + temporarily;
+    }
+};
 
 var cycle = startGame();
 
@@ -230,6 +284,8 @@ function clickPlay () {
 function clickRestart () {
     load3.classList.add("no-loaded");
     load2.classList.remove("no-loaded");
+    solutionUserTag.textContent = "";
+    userResult = 0;
     playing = true;
     timeGame = 0;
     allowAnswer = 0;
@@ -244,6 +300,7 @@ function clickRestart () {
     scoreTag.textContent = score;
     interval = setInterval(cycle, 100);
     soundFon.play();
+    autoplay === false;
     return cycle;
 }
 
