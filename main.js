@@ -173,6 +173,7 @@ function startGame () {
 }
 
 function compare () {
+    let control = true;
     for ( let i = 0; i < drops.length; i++) {
         if ( drops[i] != undefined && drops[i].result === userResult ) {
             drops[i].div.remove();
@@ -184,11 +185,15 @@ function compare () {
             allowAnswer++;
             solutionUserTag.textContent = "0";
             userResult = 0;
-        } else if ( drops[i] != undefined && drops[i].result != userResult ) {
-            score = (score - ( 20 + Math.ceil(drops[i].timeLive / 10)));
-            scoreTag.textContent = score;
-            denyAnswer++;
+            control = false;
         }
+    }
+    if ( drops != undefined && control === true ) {
+        score = ( score - 25 );
+        scoreTag.textContent = score;
+        denyAnswer++;
+        solutionUserTag.textContent = "0";
+        userResult = 0;
     }
 }
 
