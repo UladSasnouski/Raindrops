@@ -113,29 +113,43 @@ html {
 }
 
 img {
-  width: 100%;
+  max-width: 100%;
 }
 
-.one img {
-  width: 200px;
-  animation: move 10s linear 0s infinite;
+.one {
+  min-width: 200px;
+  position: fixed;
+  top: 0px;
+  left: 10%;
+  animation: move 50s linear 0s infinite;
 }
-.two img {
-  width: 300px;
-  animation: forwards 5s linear 0s infinite;
+.two {
+  min-width: 300px;
+  position: fixed;
+  top: 0px;
+  left: 30%;
+  animation: forwards 50s linear 0s infinite;
 }
-.three img {
-  width: 170px;
-  animation: backwards 5s linear 0s infinite;
+.three {
+  min-width: 170px;
+  position: fixed;
+  top: 0px;
+  left: 60%;
+  animation: backwards 50s linear 0s infinite;
 }
-.four img {
-  width: 220px;
-  animation: lets 30s linear 0s infinite;
+.four {
+  min-width: 220px;
+  position: fixed;
+  top: 0px;
+  left: 70%;
+  animation: lets 50s linear 0s infinite;
 }
-.sun img {
-  width: 250px;
-  margin: -50px -150px -100px -100px;
-  z-index: -1;
+.sun {
+  min-width: 250px;
+  position: fixed;
+  top: 0px;
+  left: 55%;
+  z-index: 1;
 }
 
 .rows {
@@ -217,10 +231,10 @@ img {
 }
 
 .btn:hover {
-  background-color: rgba(239, 241, 110, 0.5);
+  background-color: rgba(239, 241, 110, 0.1);
 }
 .btn:active {
-  border-color: rgba(239, 241, 110, 0.5);
+  border-color: rgba(239, 241, 110, 0.1);
 }
 
 .login-title,
@@ -288,6 +302,20 @@ h5 {
   z-index: 999999;
 }
 
+.drop-bonus {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-image: url(./drop.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: hue-rotate(90deg);
+  width: 150px;
+  height: 150px;
+  z-index: 999999;
+}
+
 .center {
   position: relative;
   top: 30%;
@@ -302,72 +330,105 @@ span {
   color: rgb(209, 59, 59);
 }
 
+#btnFullscreen {
+  position: fixed;
+  z-index: 9999999;
+  bottom: 10px;
+  right: 10px;
+  padding: 0;
+  margin: 0;
+  border: none; 
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+#btnFullscreen img {
+  width: 50px;
+}
+
+button:active {
+  border: none;
+}
+
 
 @keyframes move { 
   0% { 
-    margin: 0px 0px 0px 0px;
+    left: 10%;
   }
-  25% { 
-    margin: 30px 30px 0px 0px;
-  }  
   50% { 
-    margin: 20px 50px 0px 0px;
-  } 
-  75% { 
-    margin: 25px 20px 0px 0px;
-  } 
+    left: 70%;
+  }
   100% {
-    margin: 0px 0px 0px 0px;
+    left: 10%;
  }
 }
 @keyframes forwards { 
   0% { 
-    margin: 0px 0px 0px 0px;
+    top: 0px;
   }
-  25% { 
-    margin: 60px -30px 0px 0px;
-  }  
   50% { 
-    margin: -30px 30px 0px 0px;
-  } 
-  75% { 
-    margin: 5px 40px 0px 0px;
+    top: 50px;
   } 
   100% {
-    margin: 0px 0px 0px 0px;
+    top: 0px;
  }
 }
 @keyframes backwards { 
   0% { 
-    margin: 0px 0px 0px 0px;
-  }
-  25% { 
-    margin: 10px -10px 0px 0px;
-  }  
+    top: 0px;
+  } 
   50% { 
-    margin: -20px 20px 0px 0px;
-  } 
-  75% { 
-    margin: 30px -30px 0px 0px;
-  } 
+    top: 70px;
+  }  
   100% {
-    margin: 0px 0px 0px 0px;
+    top: 0px;
  }
 }
 @keyframes lets { 
   0% { 
-    margin: 0px 0px 0px 0px;
+    left: 70%;
   }
-  25% { 
-    margin: 50px 10px 0px 0px;
-  }  
   50% { 
-    margin: 10px 50px 0px 0px;
-  } 
-  75% { 
-    margin: 25px 25px 0px 0px;
+    left: 30%;
   } 
   100% {
-    margin: 0px 0px 0px 0px;
+    left: 70%;
  }
+}
+
+
+
+@media only screen and (max-width: 360px) {
+  .login-title, .login-text {
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 550px;
+    padding: 10px;
+  }
+  h1 {
+    margin: 0;
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 48px;
+    font-weight: 600;
+    color: rgb(255, 160, 17);
+    position: relative;
+  }
+  p {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgb(255, 160, 17);
+    position: relative;
+    margin: 0;
+  }
+  h5 {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgb(255, 160, 17);
+    margin: 5px;
+  }
 }

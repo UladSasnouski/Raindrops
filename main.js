@@ -16,7 +16,20 @@ var responseGame = document.getElementById('response-game');
 var rightGame = document.getElementById('right-game');
 var wrongGame = document.getElementById('wrong-game');
 var missedGame = document.getElementById('missed-game');
+var button = document.querySelectorAll("[data-key]");
+var fullscreen = document.getElementById('btnFullscreen')
 
+addEventListener('keydown', function(e){
+    mouseDown(e.keyCode);
+});
+
+var targetMin = 0;
+var targetMax = 10;
+var setGravity = 4;
+
+var scoreTop = 0;
+
+var bonus = false;
 
 var playing = false;
 var autoplay = false;
@@ -42,31 +55,30 @@ var video = document.getElementById('video');
 var footer = document.getElementById('footer');
 var scoreTag = document.getElementById('score');
 var solutionUserTag = document.getElementById('solution');
+solutionUserTag.textContent = "0";
 
 var drops = [];
+
+function mouseDown(elem) {
+    const board = document.querySelector(`button[data-key="${elem}"]`).click();
+};
 
 
 function startGame () {
     scoreTag.textContent = score;
     footer.style.height = height + 'px';
+    if (solutionUserTag.textContent === "Play" || solutionUserTag.textContent === "How To Play" || solutionUserTag.textContent === "" ) {
+        del ();
+    }
     var timerGame = function timerGame() {
         if ( timeSpawn === 40 && drops.length < 5 ) {
             let widthDisplay = document.getElementById('displays').clientWidth;
             let widthWindow = document.documentElement.clientWidth - widthDisplay;
-            let formulaMin = 0;
-            let formulaMax = 10;
+            let formulaMin = targetMin;
+            let formulaMax = targetMax;
             let sumbol = '';
             let formulaSumbol = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
-            switch (formulaSumbol) {
-                case 1:
-                    formulaMin = 0;
-                    formulaMax = 100;
-                    break;
-                case 2:
-                    formulaMin = 0;
-                    formulaMax = 100;
-                    break;
-            }
+            
             let sumbolOne = Math.floor(Math.random() * (formulaMax - formulaMin + 1)) + formulaMin;
             let sumbolTwo = Math.floor(Math.random() * (formulaMax - formulaMin + 1)) + formulaMin;;
             let produce;
@@ -141,7 +153,7 @@ function startGame () {
         
         for ( let i = 0; i < drops.length; i++) {
             drops[i].timeLive++;
-            drops[i].positionY += 4;
+            drops[i].positionY += setGravity;
             drops[i].div.style.top = drops[i].positionY + 'px';
             
             if ( drops[i].positionY + 100 >= video.getBoundingClientRect().top) {
@@ -159,6 +171,7 @@ function startGame () {
         if ( video.getBoundingClientRect().top <= 150 && playing === true ) {
             statistics ();
             clearInterval(interval);
+            clearInterval(bonusTimer);
             playing = false;
             setTimeout( function() {
                 load2.classList.add("no-loaded");
@@ -178,19 +191,107 @@ function compare () {
         if ( drops[i] != undefined && drops[i].result === userResult ) {
             drops[i].div.remove();
             soundAllow.play();
-            score = (score + 100) - Math.ceil(drops[i].timeLive / 10);
-            responseAnswer = responseAnswer + drops[i].timeLive;
-            scoreTag.textContent = score;
+            if ( scoreTop >= 10) {
+                score = (score + 100) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
+                responseAnswer = responseAnswer + drops[i].timeLive;
+                scoreTag.textContent = score;
+            } else {
+                score = (score + 100) - Math.ceil(drops[i].timeLive / 10);
+                responseAnswer = responseAnswer + drops[i].timeLive;
+                scoreTag.textContent = score;
+            }
             drops.splice(i, 1);
+            allowAnswer++;
+            scoreTop++;
+            solutionUserTag.textContent = "0";
+            userResult = 0;
+            control = false;
+        } else if ( drops[i] != undefined && drops[i].bonus === userResult && bonus === true ) {
+            switch (drops.length) {
+                case 1:
+                    drops[0].div.remove();
+                    if ( scoreTop >= 10) {
+                        score = (score + 100) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
+                        responseAnswer = responseAnswer + drops[i].timeLive;
+                        scoreTag.textContent = score;
+                    } else {
+                        score = (score + 100) - Math.ceil(drops[i].timeLive / 10);
+                        responseAnswer = responseAnswer + drops[i].timeLive;
+                        scoreTag.textContent = score;
+                    }
+                    break;
+                case 2:
+                    drops[0].div.remove();
+                    drops[1].div.remove();
+                    if ( scoreTop >= 10) {
+                        score = (score + 200) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
+                        responseAnswer = responseAnswer + drops[i].timeLive;
+                        scoreTag.textContent = score;
+                    } else {
+                        score = (score + 200) - Math.ceil(drops[i].timeLive / 10);
+                        responseAnswer = responseAnswer + drops[i].timeLive;
+                        scoreTag.textContent = score;
+                    }
+                    break;
+                case 3:
+                    drops[0].div.remove();
+                    drops[1].div.remove();
+                    drops[2].div.remove();
+                    if ( scoreTop >= 10) {
+                        score = (score + 300) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
+                        responseAnswer = responseAnswer + drops[i].timeLive;
+                        scoreTag.textContent = score;
+                    } else {
+                        score = (score + 300) - Math.ceil(drops[i].timeLive / 10);
+                        responseAnswer = responseAnswer + drops[i].timeLive;
+                        scoreTag.textContent = score;
+                    }
+                    break;
+                case 4:
+                    drops[0].div.remove();
+                    drops[1].div.remove();
+                    drops[2].div.remove();
+                    drops[3].div.remove();
+                    if ( scoreTop >= 10) {
+                        score = (score + 400) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
+                        responseAnswer = responseAnswer + drops[i].timeLive;
+                        scoreTag.textContent = score;
+                    } else {
+                        score = (score + 400) - Math.ceil(drops[i].timeLive / 10);
+                        responseAnswer = responseAnswer + drops[i].timeLive;
+                        scoreTag.textContent = score;
+                    }
+                    break;
+                case 5:
+                    drops[0].div.remove();
+                    drops[1].div.remove();
+                    drops[2].div.remove();
+                    drops[3].div.remove();
+                    drops[4].div.remove();
+                    if ( scoreTop >= 10) {
+                        score = (score + 500) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
+                        responseAnswer = responseAnswer + drops[i].timeLive;
+                        scoreTag.textContent = score;
+                    } else {
+                        score = (score + 500) - Math.ceil(drops[i].timeLive / 10);
+                        responseAnswer = responseAnswer + drops[i].timeLive;
+                        scoreTag.textContent = score;
+                    }
+                    break;
+            }
+            soundAllow.play();
+            drops.splice(0, 10);
             allowAnswer++;
             solutionUserTag.textContent = "0";
             userResult = 0;
             control = false;
+            bonus = false;
         }
     }
     if ( drops != undefined && control === true ) {
         score = ( score - 25 );
         scoreTag.textContent = score;
+        scoreTop = 0;
         denyAnswer++;
         solutionUserTag.textContent = "0";
         userResult = 0;
@@ -198,6 +299,7 @@ function compare () {
 }
 
 function statistics () {
+    autoplay === false;
     soundFon.pause();
     scoreGame.textContent = score;
     timesGame.textContent = timeGame / 10;
@@ -225,6 +327,95 @@ setInterval ( function() {
     }
 }, 3000);
 
+setInterval ( function() { 
+    targetMin = targetMin + 1;
+    targetMax = targetMax + 5;
+    setGravity = setGravity + 0.5;
+}, 15000);
+
+var bonusTimer = setInterval ( function() { 
+    if ( drops.length < 5 ) {
+        let widthDisplay = document.getElementById('displays').clientWidth;
+        let widthWindow = document.documentElement.clientWidth - widthDisplay;
+        let formulaMin = 0;
+        let formulaMax = 10;
+        let sumbol = '';
+        let formulaSumbol = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+        
+        let sumbolOne = Math.floor(Math.random() * (formulaMax - formulaMin + 1)) + formulaMin;
+        let sumbolTwo = Math.floor(Math.random() * (formulaMax - formulaMin + 1)) + formulaMin;;
+        let produce;
+        
+        switch (formulaSumbol) {
+            case 1:
+                produce = sumbolOne - sumbolTwo;
+                sumbol = '-';
+                break;
+            case 2:
+                produce = sumbolOne + sumbolTwo;
+                sumbol = '+';
+                break;
+            case 3:
+                produce = sumbolOne * sumbolTwo;
+                sumbol = '*';
+                let stat = true;
+                if ( produce % 2 != 0 || isNaN(produce) === true || !produce ){
+                    stat = false;
+                }
+                if ( stat === false ){
+                    while ( stat === false ) {
+                        sumbolOne = Math.floor(Math.random() * (formulaMax - formulaMin + 1)) + formulaMin;
+                        sumbolTwo = Math.floor(Math.random() * (formulaMax - formulaMin + 1)) + formulaMin;
+                        produce = sumbolOne * sumbolTwo;
+                        if ( produce % 2 === 0 && isNaN(produce) === false && produce ){
+                            stat = true;
+                        }
+                    }
+                } 
+                break;
+            case 4:
+                produce = sumbolOne / sumbolTwo;
+                let status = true;
+                if ( produce % 2 != 0 || isNaN(produce) === true || !produce ){
+                    status = false;
+                }
+                if ( status === false ){
+                    while ( status === false ) {
+                        sumbolOne = Math.floor(Math.random() * (formulaMax - formulaMin + 1)) + formulaMin;
+                        sumbolTwo = Math.floor(Math.random() * (formulaMax - formulaMin + 1)) + formulaMin;
+                        produce = sumbolOne / sumbolTwo;
+                        if ( produce % 2 === 0 && isNaN(produce) === false && produce ){
+                            status = true;
+                        }
+                    }
+                } 
+                sumbol = '/';
+                break;
+            default:
+                return false;
+        }
+        let posXmin = 30;
+        let posXmax = widthWindow - widthDisplay;
+        let pos = Math.round(Math.random() * (posXmax - posXmin) + posXmin);
+        timeSpawn = 0;
+
+        // Create Element
+        var dropsSpawn = document.createElement('div');
+
+        var str = `<div class="center"><span>${sumbolOne}</span></div><div class="center"><span>${sumbol}</span></div><div class="center"><span>${sumbolTwo}</span></div>`;
+
+        dropsSpawn.innerHTML = str + dropsSpawn.innerHTML;
+        
+        dropsSpawn.className = "drop-bonus";
+        dropsSpawn.style.left = pos + 'px';
+        dropsSpawn.style.top = 0 + 'px';
+
+        document.body.append(dropsSpawn);
+        drops.push({positionY: 0, positionX: pos, bonus: produce, status: true, div: dropsSpawn, timeLive: 0});
+    }
+    bonus = true;
+}, 40000);
+
 for (var i = 0; i < numbers.length; i++) {
     var number = numbers[i];
     number.addEventListener('click', function (e) {
@@ -233,10 +424,10 @@ for (var i = 0; i < numbers.length; i++) {
 };
 
 function numberPress(number) {
-    if (solutionUserTag.textContent === "Play" || solutionUserTag.textContent === "0" ) {
-        solutionUserTag.textContent = "";
+    if (solutionUserTag.textContent === "Play" ) {
+        solutionUserTag.textContent = "0";
     }
-    if (solutionUserTag.textContent === "") {
+    if (solutionUserTag.textContent === "0") {
         solutionUserTag.textContent = number;
         userResult = +number;
     } else {
@@ -260,7 +451,7 @@ function del () {
 };
 
 function submit () {
-    if (solutionUserTag.textContent === "Play" || solutionUserTag.textContent === "0" || solutionUserTag.textContent === "" ) {
+    if (solutionUserTag.textContent === "Play" || solutionUserTag.textContent === "" ) {
         return false;
     } else {
         compare ();
@@ -273,7 +464,7 @@ function negative () {
     } else {
         temporarily = "-" + solutionUserTag.textContent;
         solutionUserTag.textContent = +temporarily;
-        userResult = "-" + temporarily;
+        userResult = +temporarily;
     }
 };
 
@@ -283,30 +474,12 @@ function clickPlay () {
     load1.classList.add("no-loaded");
     load2.classList.remove("no-loaded");
     playing = true;
+    solutionUserTag.textContent = "0"
     soundFon.play();
     return cycle;
 }
 function clickRestart () {
-    load3.classList.add("no-loaded");
-    load2.classList.remove("no-loaded");
-    solutionUserTag.textContent = "";
-    userResult = 0;
-    playing = true;
-    timeGame = 0;
-    allowAnswer = 0;
-    denyAnswer = 0;
-    missedAnswer = 0;
-    score = 0;
-    responseAnswer = 0;
-    timeSpawn = 0;
-    height = 200;
-    footer.style.height = height + 'px';
-    drops = [];
-    scoreTag.textContent = score;
-    interval = setInterval(cycle, 100);
-    soundFon.play();
-    autoplay === false;
-    return cycle;
+    location.reload()
 }
 
 function clickAutoplay () {
@@ -314,9 +487,41 @@ function clickAutoplay () {
     load2.classList.remove("no-loaded");
     playing = true;
     autoplay = true;
+    solutionUserTag.textContent = "0"
     soundFon.play();
     return cycle;
 }
 
 var interval = setInterval(cycle, 100);
+bonusTimer;
 
+function toggleFullscreen(elem) {
+    elem = elem || document.documentElement;
+    if (!document.fullscreenElement && !document.mozFullScreenElement &&
+      !document.webkitFullscreenElement && !document.msFullscreenElement) {
+      fullscreen.style.visibility = 'visible';
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
+  }
+  
+  fullscreen.addEventListener('click', function() {
+    toggleFullscreen();
+  });
