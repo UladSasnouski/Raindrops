@@ -60,7 +60,12 @@ solutionUserTag.textContent = "0";
 var drops = [];
 
 function mouseDown(elem) {
-    const board = document.querySelector(`button[data-key="${elem}"]`).click();
+    if ( elem === 96 || elem === 97 || elem === 98 || elem === 99 || elem === 100 || elem === 101 || elem === 102 || elem === 103 || elem === 104 || elem === 105 || elem === 109 || elem === 110 || elem === 13 ) {
+        const board = document.querySelector(`button[data-key="${elem}"]`).click();
+        console.log(elem);
+    } else {
+        return false;
+    }
 };
 
 
@@ -189,103 +194,109 @@ function compare () {
     let control = true;
     for ( let i = 0; i < drops.length; i++) {
         if ( drops[i] != undefined && drops[i].result === userResult ) {
-            drops[i].div.remove();
+            drops[i].div.classList.add("destroy");
             soundAllow.play();
-            if ( scoreTop >= 10) {
-                score = (score + 100) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
-                responseAnswer = responseAnswer + drops[i].timeLive;
-                scoreTag.textContent = score;
-            } else {
-                score = (score + 100) - Math.ceil(drops[i].timeLive / 10);
-                responseAnswer = responseAnswer + drops[i].timeLive;
-                scoreTag.textContent = score;
-            }
-            drops.splice(i, 1);
-            allowAnswer++;
-            scoreTop++;
-            solutionUserTag.textContent = "0";
-            userResult = 0;
             control = false;
+            setTimeout( function() {
+                drops[i].div.remove();
+                if ( scoreTop >= 10) {
+                    score = (score + 100) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
+                    responseAnswer = responseAnswer + drops[i].timeLive;
+                    scoreTag.textContent = score;
+                } else {
+                    score = (score + 100) - Math.ceil(drops[i].timeLive / 10);
+                    responseAnswer = responseAnswer + drops[i].timeLive;
+                    scoreTag.textContent = score;
+                }
+                drops.splice(i, 1);
+                allowAnswer++;
+                scoreTop++;
+                solutionUserTag.textContent = "0";
+                userResult = 0;
+            }, 900);
         } else if ( drops[i] != undefined && drops[i].bonus === userResult && bonus === true ) {
-            switch (drops.length) {
-                case 1:
-                    drops[0].div.remove();
-                    if ( scoreTop >= 10) {
-                        score = (score + 100) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
-                        responseAnswer = responseAnswer + drops[i].timeLive;
-                        scoreTag.textContent = score;
-                    } else {
-                        score = (score + 100) - Math.ceil(drops[i].timeLive / 10);
-                        responseAnswer = responseAnswer + drops[i].timeLive;
-                        scoreTag.textContent = score;
-                    }
-                    break;
-                case 2:
-                    drops[0].div.remove();
-                    drops[1].div.remove();
-                    if ( scoreTop >= 10) {
-                        score = (score + 200) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
-                        responseAnswer = responseAnswer + drops[i].timeLive;
-                        scoreTag.textContent = score;
-                    } else {
-                        score = (score + 200) - Math.ceil(drops[i].timeLive / 10);
-                        responseAnswer = responseAnswer + drops[i].timeLive;
-                        scoreTag.textContent = score;
-                    }
-                    break;
-                case 3:
-                    drops[0].div.remove();
-                    drops[1].div.remove();
-                    drops[2].div.remove();
-                    if ( scoreTop >= 10) {
-                        score = (score + 300) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
-                        responseAnswer = responseAnswer + drops[i].timeLive;
-                        scoreTag.textContent = score;
-                    } else {
-                        score = (score + 300) - Math.ceil(drops[i].timeLive / 10);
-                        responseAnswer = responseAnswer + drops[i].timeLive;
-                        scoreTag.textContent = score;
-                    }
-                    break;
-                case 4:
-                    drops[0].div.remove();
-                    drops[1].div.remove();
-                    drops[2].div.remove();
-                    drops[3].div.remove();
-                    if ( scoreTop >= 10) {
-                        score = (score + 400) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
-                        responseAnswer = responseAnswer + drops[i].timeLive;
-                        scoreTag.textContent = score;
-                    } else {
-                        score = (score + 400) - Math.ceil(drops[i].timeLive / 10);
-                        responseAnswer = responseAnswer + drops[i].timeLive;
-                        scoreTag.textContent = score;
-                    }
-                    break;
-                case 5:
-                    drops[0].div.remove();
-                    drops[1].div.remove();
-                    drops[2].div.remove();
-                    drops[3].div.remove();
-                    drops[4].div.remove();
-                    if ( scoreTop >= 10) {
-                        score = (score + 500) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
-                        responseAnswer = responseAnswer + drops[i].timeLive;
-                        scoreTag.textContent = score;
-                    } else {
-                        score = (score + 500) - Math.ceil(drops[i].timeLive / 10);
-                        responseAnswer = responseAnswer + drops[i].timeLive;
-                        scoreTag.textContent = score;
-                    }
-                    break;
-            }
+            drops[i].div.classList.add("destroy");
             soundAllow.play();
-            drops.splice(0, 10);
-            allowAnswer++;
-            solutionUserTag.textContent = "0";
-            userResult = 0;
             control = false;
             bonus = false;
+            setTimeout( function() {
+                switch (drops.length) {
+                    case 1:
+                        drops[0].div.remove();
+                        if ( scoreTop >= 10) {
+                            score = (score + 100) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
+                            responseAnswer = responseAnswer + drops[i].timeLive;
+                            scoreTag.textContent = score;
+                        } else {
+                            score = (score + 100) - Math.ceil(drops[i].timeLive / 10);
+                            responseAnswer = responseAnswer + drops[i].timeLive;
+                            scoreTag.textContent = score;
+                        }
+                        break;
+                    case 2:
+                        drops[0].div.remove();
+                        drops[1].div.remove();
+                        if ( scoreTop >= 10) {
+                            score = (score + 200) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
+                            responseAnswer = responseAnswer + drops[i].timeLive;
+                            scoreTag.textContent = score;
+                        } else {
+                            score = (score + 200) - Math.ceil(drops[i].timeLive / 10);
+                            responseAnswer = responseAnswer + drops[i].timeLive;
+                            scoreTag.textContent = score;
+                        }
+                        break;
+                    case 3:
+                        drops[0].div.remove();
+                        drops[1].div.remove();
+                        drops[2].div.remove();
+                        if ( scoreTop >= 10) {
+                            score = (score + 300) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
+                            responseAnswer = responseAnswer + drops[i].timeLive;
+                            scoreTag.textContent = score;
+                        } else {
+                            score = (score + 300) - Math.ceil(drops[i].timeLive / 10);
+                            responseAnswer = responseAnswer + drops[i].timeLive;
+                            scoreTag.textContent = score;
+                        }
+                        break;
+                    case 4:
+                        drops[0].div.remove();
+                        drops[1].div.remove();
+                        drops[2].div.remove();
+                        drops[3].div.remove();
+                        if ( scoreTop >= 10) {
+                            score = (score + 400) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
+                            responseAnswer = responseAnswer + drops[i].timeLive;
+                            scoreTag.textContent = score;
+                        } else {
+                            score = (score + 400) - Math.ceil(drops[i].timeLive / 10);
+                            responseAnswer = responseAnswer + drops[i].timeLive;
+                            scoreTag.textContent = score;
+                        }
+                        break;
+                    case 5:
+                        drops[0].div.remove();
+                        drops[1].div.remove();
+                        drops[2].div.remove();
+                        drops[3].div.remove();
+                        drops[4].div.remove();
+                        if ( scoreTop >= 10) {
+                            score = (score + 500) - Math.ceil(drops[i].timeLive / 10) + (scoreTop * 2);
+                            responseAnswer = responseAnswer + drops[i].timeLive;
+                            scoreTag.textContent = score;
+                        } else {
+                            score = (score + 500) - Math.ceil(drops[i].timeLive / 10);
+                            responseAnswer = responseAnswer + drops[i].timeLive;
+                            scoreTag.textContent = score;
+                        }
+                        break;
+                }
+                drops.splice(0, 10);
+                allowAnswer++;
+                solutionUserTag.textContent = "0";
+                userResult = 0;
+            }, 900);
         }
     }
     if ( drops != undefined && control === true ) {

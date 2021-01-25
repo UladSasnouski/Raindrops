@@ -316,6 +316,13 @@ h5 {
   z-index: 999999;
 }
 
+.destroy {
+  animation-play-state: running;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+  animation: destroy 1s cubic-bezier(1, 0, 0, 1);
+}
+
 .center {
   position: relative;
   top: 30%;
@@ -351,6 +358,13 @@ button:active {
   border: none;
 }
 
+
+@keyframes destroy {
+  to {
+    transform:scale(3, 3);
+    opacity: 0;
+  }
+}
 
 @keyframes move { 
   0% { 
