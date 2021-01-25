@@ -161,7 +161,7 @@ function startGame () {
             drops[i].positionY += setGravity;
             drops[i].div.style.top = drops[i].positionY + 'px';
             
-            if ( drops[i].positionY + 100 >= video.getBoundingClientRect().top) {
+            if ( drops[i].positionY + 100 >= video.getBoundingClientRect().top && drops[i].status === true) {
                 drops[i].div.remove();
                 height += 50;
                 footer.style.height = height + 'px';
@@ -197,6 +197,7 @@ function compare () {
             drops[i].div.classList.add("destroy");
             soundAllow.play();
             control = false;
+            drops[i].status = false;
             setTimeout( function() {
                 drops[i].div.remove();
                 if ( scoreTop >= 10) {
@@ -219,6 +220,7 @@ function compare () {
             soundAllow.play();
             control = false;
             bonus = false;
+            drops[i].status = false;
             setTimeout( function() {
                 switch (drops.length) {
                     case 1:

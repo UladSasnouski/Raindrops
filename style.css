@@ -158,6 +158,10 @@ img {
   flex-direction: row;
 }
 
+.rows p {
+  padding: 10px;
+}
+
 .score {
   display: flex;
   justify-content: center;
@@ -240,7 +244,6 @@ img {
 .login-title,
 .login-text {
   margin-top: 5%;
-  display: flex;
   align-items: center;
   justify-content: center;
   max-width: 650px;
@@ -253,6 +256,8 @@ p {
   color: rgb(255, 160, 17);
   position: relative;
   margin: 0;
+  padding-bottom: 15px;
+  text-align: center;
 }
 
 h1 {
@@ -416,7 +421,6 @@ button:active {
 @media only screen and (max-width: 360px) {
   .login-title, .login-text {
     margin-top: 5%;
-    display: flex;
     align-items: center;
     justify-content: center;
     max-width: 550px;
@@ -437,6 +441,7 @@ button:active {
     color: rgb(255, 160, 17);
     position: relative;
     margin: 0;
+    padding-bottom: 5px;
   }
   h5 {
     font-family: 'Cabin Sketch', cursive;
