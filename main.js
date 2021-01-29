@@ -17,7 +17,9 @@ var rightGame = document.getElementById('right-game');
 var wrongGame = document.getElementById('wrong-game');
 var missedGame = document.getElementById('missed-game');
 var button = document.querySelectorAll("[data-key]");
-var fullscreen = document.getElementById('btnFullscreen')
+var fullscreen = document.getElementById('btnFullscreen');
+var rangeLeft = document.getElementById('range-left');
+var rangeRight = document.getElementById('range-right');
 
 addEventListener('keydown', function(e){
     mouseDown(e.keyCode);
@@ -186,6 +188,8 @@ function startGame () {
 
         timeGame++;
         timeSpawn++;
+        rangeLeft.textContent = targetMin;
+        rangeRight.textContent = targetMax;
     }
     return timerGame;
 }
