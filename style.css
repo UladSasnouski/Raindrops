@@ -1,42 +1,42 @@
 html {
-    box-sizing: border-box;
-    font-size: 10px;
-    font-family: 'Cabin Sketch', cursive;
-  }
-  
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-  
-  body {
-    padding: 0;
-    margin: 0;
-    font-family: 'Amatic SC', cursive;
-    color: rgb(255, 160, 17);
-  }
-  
-  .no-loaded {
-      display: none;
-  }
+  box-sizing: border-box;
+  font-size: 10px;
+  font-family: "Cabin Sketch", cursive;
+}
 
-  .container {
-    margin: 0 auto;
-    max-width: 1200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Amatic SC", cursive;
+  color: rgb(255, 160, 17);
+}
+
+.no-loaded {
+  display: none;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 :focus {
-    outline-style: none;
-    outline-width: 0px !important;
-    outline-color: none !important;
+  outline-style: none;
+  outline-width: 0px !important;
+  outline-color: none !important;
 } /* Убрать обводку у кнопок после нажатия */
 
-
-
-.bgvideo{
+.bgvideo {
   opacity: 0.3;
   bottom: -60%;
   width: auto;
@@ -166,6 +166,12 @@ img {
   flex-direction: row;
 }
 
+.rows2 {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
 .rows p {
   padding: 10px;
 }
@@ -186,10 +192,10 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top:  rgb(230, 240, 240) solid 5px;
-  border-left:  rgb(230, 240, 240) solid 5px;
-  border-bottom:  rgb(170, 245, 245) solid 5px;
-  border-right:  rgb(170, 245, 245) solid 5px;
+  border-top: rgb(230, 240, 240) solid 5px;
+  border-left: rgb(230, 240, 240) solid 5px;
+  border-bottom: rgb(170, 245, 245) solid 5px;
+  border-right: rgb(170, 245, 245) solid 5px;
   border-radius: 10px;
   background-color: rgb(200, 245, 245);
   min-width: 162px;
@@ -207,10 +213,10 @@ img {
 
 .btn-log {
   padding: 5px 20px 5px 20px !important;
-  border-top:  rgb(255, 160, 17) solid 5px !important;
-  border-left:  rgb(255, 160, 17) solid 5px !important;
-  border-bottom:  rgba(255, 160, 17, 0.6) solid 5px !important;
-  border-right:  rgba(255, 160, 17, 0.6) solid 5px !important;
+  border-top: rgb(255, 160, 17) solid 5px !important;
+  border-left: rgb(255, 160, 17) solid 5px !important;
+  border-bottom: rgba(255, 160, 17, 0.6) solid 5px !important;
+  border-right: rgba(255, 160, 17, 0.6) solid 5px !important;
   background-color: rgb(243, 179, 84) !important;
 }
 
@@ -229,14 +235,14 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top:  rgb(230, 240, 240) solid 5px;
-  border-left:  rgb(230, 240, 240) solid 5px;
-  border-bottom:  rgb(170, 245, 245) solid 5px;
-  border-right:  rgb(170, 245, 245) solid 5px;
+  border-top: rgb(230, 240, 240) solid 5px;
+  border-left: rgb(230, 240, 240) solid 5px;
+  border-bottom: rgb(170, 245, 245) solid 5px;
+  border-right: rgb(170, 245, 245) solid 5px;
   border-radius: 10px;
   background-color: rgb(200, 245, 245);
   margin: 3px;
-  font-family: 'Cabin Sketch', cursive;
+  font-family: "Cabin Sketch", cursive;
   font-size: 24px;
   cursor: pointer;
   transition: 0.3s;
@@ -258,7 +264,7 @@ img {
 }
 
 .range p {
-  font-family: 'Cabin Sketch', cursive;
+  font-family: "Cabin Sketch", cursive;
   font-size: 24px;
   font-weight: 600;
   color: azure;
@@ -269,7 +275,7 @@ img {
 }
 
 p {
-  font-family: 'Cabin Sketch', cursive;
+  font-family: "Cabin Sketch", cursive;
   font-size: 24px;
   font-weight: 600;
   color: rgb(255, 160, 17);
@@ -281,7 +287,7 @@ p {
 
 h1 {
   margin: 0;
-  font-family: 'Cabin Sketch', cursive;
+  font-family: "Cabin Sketch", cursive;
   font-size: 64px;
   font-weight: 800;
   color: rgb(255, 160, 17);
@@ -289,7 +295,7 @@ h1 {
 }
 
 h2 {
-  font-family: 'Cabin Sketch', cursive;
+  font-family: "Cabin Sketch", cursive;
   font-size: 28px;
   font-weight: 600;
   color: azure;
@@ -297,7 +303,7 @@ h2 {
   top: 40%;
 }
 h3 {
-  font-family: 'Cabin Sketch', cursive;
+  font-family: "Cabin Sketch", cursive;
   font-size: 36px;
   font-weight: 600;
   color: azure;
@@ -306,7 +312,7 @@ h3 {
 }
 
 h5 {
-  font-family: 'Cabin Sketch', cursive;
+  font-family: "Cabin Sketch", cursive;
   font-size: 36px;
   font-weight: 600;
   color: rgb(255, 160, 17);
@@ -355,7 +361,7 @@ h5 {
 
 span {
   padding: 5px;
-  font-family: 'Cabin Sketch', cursive;
+  font-family: "Cabin Sketch", cursive;
   font-size: 24px;
   font-weight: 800;
   color: rgb(209, 59, 59);
@@ -368,7 +374,7 @@ span {
   right: 10px;
   padding: 0;
   margin: 0;
-  border: none; 
+  border: none;
   outline: none;
   cursor: pointer;
   background: transparent;
@@ -382,63 +388,122 @@ button:active {
   border: none;
 }
 
-
 @keyframes destroy {
   to {
-    transform:scale(3, 3);
+    transform: scale(3, 3);
     opacity: 0;
   }
 }
 
-@keyframes move { 
-  0% { 
+@keyframes move {
+  0% {
     left: 10%;
   }
-  50% { 
+  50% {
     left: 70%;
   }
   100% {
     left: 10%;
- }
+  }
 }
-@keyframes forwards { 
-  0% { 
+@keyframes forwards {
+  0% {
     top: 0px;
   }
-  50% { 
+  50% {
     top: 50px;
-  } 
+  }
   100% {
     top: 0px;
- }
+  }
 }
-@keyframes backwards { 
-  0% { 
+@keyframes backwards {
+  0% {
     top: 0px;
-  } 
-  50% { 
+  }
+  50% {
     top: 70px;
-  }  
+  }
   100% {
     top: 0px;
- }
+  }
 }
-@keyframes lets { 
-  0% { 
+@keyframes lets {
+  0% {
     left: 70%;
   }
-  50% { 
+  50% {
     left: 30%;
-  } 
+  }
   100% {
     left: 70%;
- }
+  }
 }
 
-
+@media only screen and (max-width: 550px) {
+  .rows {
+    display: block;
+    flex: 1;
+    flex-direction: row;
+  }
+  .display {
+    min-width: 75px;
+    height: 30px;
+    margin-bottom: 10px;
+  }
+  .btn {
+    padding: 0;
+    min-width: 25px;
+    min-height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: rgb(230, 240, 240) solid 5px;
+    border-left: rgb(230, 240, 240) solid 5px;
+    border-bottom: rgb(170, 245, 245) solid 5px;
+    border-right: rgb(170, 245, 245) solid 5px;
+    border-radius: 10px;
+    background-color: rgb(200, 245, 245);
+    margin: 1px;
+    font-family: "Cabin Sketch", cursive;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .range p {
+    font-family: "Cabin Sketch", cursive;
+    font-size: 14px;
+    font-weight: 400;
+    color: azure;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  h3 {
+    font-family: "Cabin Sketch", cursive;
+    font-size: 16px;
+    font-weight: 400;
+    color: azure;
+    position: relative;
+    top: -10%;
+    margin: 0;
+  }
+  .range {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 0px;
+  }
+  .button-organ {
+    flex-wrap: wrap;
+  }
+}
 
 @media only screen and (max-width: 360px) {
-  .login-title, .login-text {
+  .login-title,
+  .login-text {
     margin-top: 5%;
     align-items: center;
     justify-content: center;
@@ -447,14 +512,14 @@ button:active {
   }
   h1 {
     margin: 0;
-    font-family: 'Cabin Sketch', cursive;
+    font-family: "Cabin Sketch", cursive;
     font-size: 48px;
     font-weight: 600;
     color: rgb(255, 160, 17);
     position: relative;
   }
   p {
-    font-family: 'Cabin Sketch', cursive;
+    font-family: "Cabin Sketch", cursive;
     font-size: 18px;
     font-weight: 400;
     color: rgb(255, 160, 17);
@@ -463,7 +528,7 @@ button:active {
     padding-bottom: 5px;
   }
   h5 {
-    font-family: 'Cabin Sketch', cursive;
+    font-family: "Cabin Sketch", cursive;
     font-size: 18px;
     font-weight: 400;
     color: rgb(255, 160, 17);

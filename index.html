@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Raindrops</title>
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Raindrops</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <audio id="sound-down" src="./drop-sound.mp3"></audio>
     <audio id="sound-allow" src="./sound-allow.mp3"></audio>
@@ -17,7 +19,9 @@
                 <h1>RAINDROPS</h1>
             </div>
             <div class="login-text">
-                <p>This game is designed to develop mental thinking, raise the level of arithmetic, concentration and attention. During the game, raindrops appear with an example. You need to give the correct answer until the drop falls into the sea. The faster you answer, the more points you get.</p>
+                <p>This game is designed to develop mental thinking, raise the level of arithmetic, concentration and
+                    attention. During the game, raindrops appear with an example. You need to give the correct answer
+                    until the drop falls into the sea. The faster you answer, the more points you get.</p>
                 <p>The game uses mathematical functions:</p>
                 <div class="rows">
                     <p>Addition +</p>
@@ -31,14 +35,14 @@
                     <button type="button" onClick="clickPlay()" data-number class="btn-log btn">Play</button>
                 </div>
                 <div class="how-play-button">
-                    <button type="button" onClick="clickAutoplay()" data-number class="btn-log btn">How To Play</button> 
+                    <button type="button" onClick="clickAutoplay()" data-number class="btn-log btn">How To Play</button>
                 </div>
             </div>
         </div>
     </div>
     <div class="load-game2 no-loaded">
         <div class="game">
-            <div class="rows">
+            <div class="rows2">
                 <div class="clouds">
                     <div class="cloud one">
                         <img src="./clouds.svg" alt="clouds">
@@ -141,4 +145,5 @@
     <button id="btnFullscreen" type="button"><img src="./diagonal-enlarge.svg"></button>
     <script src="./main.js"></script>
 </body>
+
 </html>
