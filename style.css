@@ -184,7 +184,7 @@ img {
   background-position: center;
   position: relative;
   width: 100%;
-  top: -10%;
+  margin-top: -100px;
   height: 200px;
 }
 
@@ -268,7 +268,6 @@ img {
   font-size: 24px;
   font-weight: 600;
   color: azure;
-  position: relative;
   margin: 0;
   padding-bottom: 15px;
   text-align: center;
@@ -299,16 +298,18 @@ h2 {
   font-size: 28px;
   font-weight: 600;
   color: azure;
-  position: relative;
-  top: 40%;
+  font-family: "Cabin Sketch", cursive;
+  font-size: 28px;
+  font-weight: 600;
+  color: azure;
+  margin-top: 100px;
 }
 h3 {
   font-family: "Cabin Sketch", cursive;
   font-size: 36px;
   font-weight: 600;
   color: azure;
-  position: relative;
-  top: -10%;
+  margin: 10px 0px 10px 0px;
 }
 
 h5 {
@@ -351,6 +352,11 @@ h5 {
   animation-iteration-count: 1;
   animation-fill-mode: both;
   animation: destroy 1s cubic-bezier(1, 0, 0, 1);
+}
+
+.bottoms {
+  max-width: 170px;
+  max-height: 280px;
 }
 
 .center {
@@ -475,7 +481,6 @@ button:active {
     font-size: 14px;
     font-weight: 400;
     color: azure;
-    position: relative;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -485,9 +490,7 @@ button:active {
     font-size: 16px;
     font-weight: 400;
     color: azure;
-    position: relative;
-    top: -10%;
-    margin: 0;
+    margin: 10px 0px 10px 0px;
   }
   .range {
     display: flex;
