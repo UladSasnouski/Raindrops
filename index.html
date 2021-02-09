@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Raindrops</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <audio id="sound-down" src="./drop-sound.mp3"></audio>
+    <audio id="sound-allow" src="./sound-allow.mp3"></audio>
+    <audio id="sound-fon" loop src="./sound-fon.mp3"></audio>
+    <div class="load-game1">
+        <div class="login">
+            <div class="login-title">
+                <h1>RAINDROPS</h1>
+            </div>
+            <div class="login-text">
+                <p>This game is designed to develop mental thinking, raise the level of arithmetic, concentration and
+                    attention. During the game, raindrops appear with an example. You need to give the correct answer
+                    until the drop falls into the sea. The faster you answer, the more points you get.</p>
+                <p>The game uses mathematical functions:</p>
+                <div class="rows">
+                    <p>Addition +</p>
+                    <p>Subtraction -</p>
+                    <p>Multiplication *</p>
+                    <p>Division /</p>
+                </div>
+            </div>
+            <div class="login-buttons">
+                <div class="play-button">
+                    <button type="button" onClick="clickPlay()" data-number class="btn-log btn">Play</button>
+                </div>
+                <div class="how-play-button">
+                    <button type="button" onClick="clickAutoplay()" data-number class="btn-log btn">How To Play</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="load-game2 no-loaded">
+        <div class="game">
+            <div class="rows2">
+                <div class="clouds">
+                    <div class="cloud one">
+                        <img src="./clouds.svg" alt="clouds">
+                    </div>
+                    <div class="cloud two">
+                        <img src="./clouds.svg" alt="clouds">
+                    </div>
+                    <div class="cloud three">
+                        <img src="./clouds.svg" alt="clouds">
+                    </div>
+                    <div class="sun">
+                        <img src="./sun.svg" alt="sun">
+                    </div>
+                    <div class="cloud four">
+                        <img src="./clouds.svg" alt="clouds">
+                    </div>
+                </div>
+                <div class="displays" id="displays">
+                    <div class="score">
+                        <h2>Score:</h2>
+                    </div>
+                    <h3 id="score"></h3>
+                    <div class="range">
+                        <p>Range of numbers</p>
+                        <p>From <span id="range-left"></span> to <span id="range-right"></span></p>
+                    </div>
+                    <div class="display">
+                        <h3 id="solution">0</h3>
+                    </div>
+                    <div class="bottoms">
+                        <div class="button-top">
+                            <button type="button" data-key="103" data-number class="btn">7</button>
+                            <button type="button" data-key="104" data-number class="btn">8</button>
+                            <button type="button" data-key="105" data-number class="btn">9</button>
+                        </div>
+                        <div class="button-center">
+                            <button type="button" data-key="100" data-number class="btn">4</button>
+                            <button type="button" data-key="101" data-number class="btn">5</button>
+                            <button type="button" data-key="102" data-number class="btn">6</button>
+                        </div>
+                        <div class="button-down">
+                            <button type="button" data-key="97" data-number class="btn">1</button>
+                            <button type="button" data-key="98" data-number class="btn">2</button>
+                            <button type="button" data-key="99" data-number class="btn">3</button>
+                        </div>
+                        <div class="button-organ">
+                            <button type="button" data-key="110" onClick="del ()" class="btn">Del</button>
+                            <button type="button" data-key="96" data-number class="btn">0</button>
+                            <button type="button" data-key="13" onClick="submit ()" class="btn">Ok</button>
+                        </div>
+                        <div class="button-organ">
+                            <button type="button" data-key="109" onClick="negative ()" class="btn">-</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="footer">
+                <video autoplay loop muted class="bgvideo" id="video" src="./video/water.mp4"></video>
+            </div>
+        </div>
+    </div>
+    <div class="load-game3 no-loaded">
+        <div class="statistics">
+            <div class="statistics-title">
+                <h1>Statistics:</h1>
+            </div>
+            <div class="statistics-table">
+                <div class="end-score">
+                    <h5>Score:</h5>
+                    <h5 id="score-game">0</h5>
+                </div>
+                <div class="time">
+                    <h5>Game Time:</h5>
+                    <h5 id="time-game">0</h5>
+                </div>
+                <div class="response">
+                    <h5>Average response time:</h5>
+                    <h5 id="response-game">0</h5>
+                </div>
+                <div class="allow">
+                    <h5>Right answers:</h5>
+                    <h5 id="right-game">0</h5>
+                </div>
+                <div class="deny">
+                    <h5>Wrong answers:</h5>
+                    <h5 id="wrong-game">0</h5>
+                </div>
+                <div class="missed">
+                    <h5>Missed answers:</h5>
+                    <h5 id="missed-game">0</h5>
+                </div>
+                <div class="login-buttons">
+                    <div class="play-button">
+                        <button type="button" onClick="clickRestart()" data-number class="btn-log btn">Restart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="btnFullscreen" type="button"><img src="./diagonal-enlarge.svg"></button>
+    <script src="./main.js"></script>
+</body>
+
+</html>
